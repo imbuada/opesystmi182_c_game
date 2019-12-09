@@ -6,26 +6,41 @@ int numSticks = 21;
 int userMove;
 int compMove;
 
-int main (int argc, char *argv[]){
+int main (void){
 
 initscr();
 noecho();
 curs_set(FALSE);
 
-printw("21 MATCHSTICKS");
-printw("");
-printw( "RULES");
-printw("");
-printw( "1. Each turn, the players will pick up the matchsticks");
-printw("");
-printw( "2. A player can pick a minimum of 1 stick up to a max of 4");
-printw("");
-printw( "3. The player who will pick the last matchstick loses the game");
+mvaddstr(0,33,"21 MATCHSTICKS");
+mvaddstr(10,20, "Pick up tp 4 sticks at the time. The player who draws the last stick loses the game");
 
+//while (numSticks > =1){
+
+
+
+
+
+//}
+
+
+drawSticks();
 refresh();
 
 sleep(1);
 
 endwin();
+
+}
+int drawSticks(){
+int i,j;
+
+for(i = 1; i<=5;i++){
+	for (j=1; j<=numSticks; j++){
+			mvprintw(40,33, "|");
+		}
+
+	mvprintw(40,33, "|");
+	}
 
 }
