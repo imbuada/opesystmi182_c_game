@@ -1,9 +1,11 @@
 #include <ncurses.h>
 #include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 
 int numSticks = 21;
-int userMove;
+int userMove ;
 int compMove;
 
 int main (void){
@@ -13,18 +15,15 @@ noecho();
 curs_set(FALSE);
 
 mvaddstr(0,33,"21 MATCHSTICKS");
-mvaddstr(10,20, "Pick up tp 4 sticks at the time. The player who draws the last stick loses the game");
-
-//while (numSticks > =1){
-
-
-
-
-
-//}
+mvprintw(10,0, "Pick up tp 4 sticks at the time. The player who draws the last stick loses the game");
+refresh();
+mvprintw(15,0,"How many sticks will you take? ");
+scanw("%d",&userMove);
+refresh();
+mvprintw(20,20, "You took %d",userMove);
+refresh();
 
 
-drawSticks();
 refresh();
 
 sleep(1);
