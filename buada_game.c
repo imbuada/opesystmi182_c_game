@@ -8,7 +8,7 @@ int numSticks = 21;
 int userMove  ;
 int compMove;
 
-
+int drawSticks();
 int main (void){
 
 initscr();
@@ -21,25 +21,28 @@ refresh();
 
 
 while (numSticks>=1){
+	
 	mvprintw(15,0,"How many sticks will you take? ");
 	refresh();
 	userMove = getch() - '0';
 	refresh();
-	numSticks = numSticks - userMove;
+	
 	
 	mvprintw(17,0, "You took %d",userMove);
-	refresh();
 
 	compMove = rand()%4+1;
 	refresh();
-	numSticks = numSticks - compMove;
 	mvprintw(20,0,"Opponent took %d", compMove);
-	mvprintw(22,0,"Number of sticks left : %d" , numSticks);
+	
+
+	numSticks = numSticks - userMove - compMove;
+	mvprintw(25,0,"Number of sticks left : %d" , numSticks);
 	refresh();
 	if (numSticks ==1){
 		mvprintw(30,10,"Opponent wins!");
+		break;
+		refresh();
 	}
-	refresh();
 	
 	}
 
@@ -49,15 +52,14 @@ sleep(1);
 endwin();
 
 }
-int drawSticks(){
-int i,j;
+int drawSticks(int row, int col, int h, int w){
 
-for(i = 1; i<=5;i++){
-	for (j=1; j<=numSticks; j++){
-			mvprintw(40,33, "|");
+for(int i = 0; i<row;i++){
+
+for (int j = 0; j<col; j++){
+	move (row+i, col+j);
+	printw("|");
+
 		}
-
-	mvprintw(40,33, "|");
 	}
-
 }
