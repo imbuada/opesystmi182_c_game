@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 
 int numSticks = 21;
 int userMove  ;
@@ -33,17 +33,18 @@ while (numSticks>=1){
 	compMove = rand()%4+1;
 	refresh();
 	mvprintw(20,0,"Opponent took %d", compMove);
-	
+	refresh();
 
 	numSticks = numSticks - userMove - compMove;
-	mvprintw(25,0,"Number of sticks left : %d" , numSticks);
+	refresh();
+	mvprintw(25,0,"Number of sticks left : %d", numSticks);
 	refresh();
 	if (numSticks ==1){
 		mvprintw(30,10,"Opponent wins!");
 		break;
 		refresh();
 	}
-	
+	refresh();
 	}
 
 
